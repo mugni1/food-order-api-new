@@ -19,7 +19,9 @@ class CategorySeeder extends Seeder
         Schema::enableForeignKeyConstraints();
 
         $catgorys = [
-            ['name' => 'foods'],
+            ['name' => 'heavy meals'],
+            ['name' => 'seafoods'],
+            ['name' => 'appetizers'],
             ['name' => 'drinks'],
         ];
 

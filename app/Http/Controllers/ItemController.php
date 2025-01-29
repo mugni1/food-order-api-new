@@ -9,7 +9,15 @@ use Illuminate\Http\Request;
 
 class ItemController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
+
+        // jika ada params dengan category tertentu
+        if($request->query('category')){
+            $category = $request->query('category');
+            $items = Item::where('category_id', $category)->get();
+            return ItemResource::collection($items);
+        }
+
         $items = Item::all();
         return ItemResource::collection($items);
     }
