@@ -31,7 +31,8 @@ class ItemController extends Controller
         $request->validate([
             'name' => 'required|max:225',
             'price' => 'required|numeric|integer',
-            'image' => 'nullable|mimes:png,jpg,jpeg,jfif,webp|max:2048'
+            'image' => 'nullable|mimes:png,jpg,jpeg,jfif,webp|max:2048',
+            'category_id' => 'required|integer|exists:categorys,id'
         ]);
 
         // value default dari image
@@ -52,6 +53,7 @@ class ItemController extends Controller
             'name' => $request['name'],
             'price' => $request['price'],
             'image' => $newFileName,
+            'category_id' => $request['category_id'],
         ]);
 
         // return hasil
@@ -65,7 +67,8 @@ class ItemController extends Controller
         $request->validate([
             'name' => 'nullable|max:225',
             'price' => 'nullable|numeric|integer',
-            'image' => 'nullable|mimes:png,jpg,jpeg,jfif,webp|max:2048'
+            'image' => 'nullable|mimes:png,jpg,jpeg,jfif,webp|max:2048',
+            'category_id' => 'nullable|integer|exists:categorys,id'
         ]);
 
         // data dari user

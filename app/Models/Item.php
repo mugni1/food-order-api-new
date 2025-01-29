@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Item extends Model
 {
-    protected $fillable = ['name','price','image'];
+    protected $fillable = ['name','price','image', 'category_id'];
 
     /**
      * Get the categorys that owns the Item
