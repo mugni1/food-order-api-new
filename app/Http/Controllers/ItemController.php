@@ -72,7 +72,7 @@ class ItemController extends Controller
         ]);
 
         // data dari user
-        $data = $request->only(['name', 'price', 'image']);
+        $data = $request->only(['name', 'price', 'image', 'category_id']);
 
         // jika ada gambar
         if($request->file('image')){
