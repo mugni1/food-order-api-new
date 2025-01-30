@@ -14,11 +14,11 @@ class ItemController extends Controller
         // jika ada params dengan category tertentu
         if($request->query('category')){
             $category = $request->query('category');
-            $items = Item::where('category_id', $category)->get();
+            $items = Item::where('category_id', $category)->orderByDesc('id')->get();
             return ItemResource::collection($items);
         }
 
-        $items = Item::all();
+        $items = Item::orderByDesc('id')->get();
         return ItemResource::collection($items);
     }
 
