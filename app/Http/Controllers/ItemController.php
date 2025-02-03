@@ -31,7 +31,7 @@ class ItemController extends Controller
         $request->validate([
             'name' => 'required|max:225',
             'price' => 'required|numeric|integer',
-            'image' => 'nullable|mimes:png,jpg,jpeg,jfif,webp|max:2048',
+            'image' => 'nullable|mimes:jpeg,png,jpg,jfif,webp|max:2048',
             'category_id' => 'required|integer|exists:categorys,id'
         ]);
 
@@ -92,6 +92,17 @@ class ItemController extends Controller
         return response([
            'message' => 'success update item',
            'data' => $result,
+        ]);
+    }
+
+    // delete
+    public function destroy(Request $request){
+        $item = Item::findOrFail($request['id']);
+        $item->delete();
+
+        return response([
+            'message' => 'success delete item',
+            'data' => new ItemResource($item),
         ]);
     }
 }
