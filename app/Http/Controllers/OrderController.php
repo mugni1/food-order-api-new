@@ -11,7 +11,7 @@ class OrderController extends Controller
 {
     // show all order
     public function index(){
-        $orders = Order::select(['id','customer_name','table_no',  'status', 'total','order_date', 'order_time',])->get();
+        $orders = Order::orderBy('created_at', 'desc')->select(['id','customer_name','table_no',  'status', 'total','order_date', 'order_time',])->get();
         return response(['data' => $orders], 200);
     }
 
