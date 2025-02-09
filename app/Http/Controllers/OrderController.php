@@ -52,7 +52,7 @@ class OrderController extends Controller
             ]);
         });
 
-        return response(['data' => $order], 201);
+       return response(['message'=> 'status ordered for ' . $request['customer_name'],'data' => $order], 201);
     }
 
     // update order status to ready

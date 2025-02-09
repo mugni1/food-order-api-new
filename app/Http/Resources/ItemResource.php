@@ -21,6 +21,7 @@ class ItemResource extends JsonResource
             "price"=> $this->price,
             "image"=> $this->image,
             "category"=> new CategoryResource( $this->category),
+            "qty" => 1,
             "created_at"=> $this->created_at->translatedFormat('l, Y-m-d H:i:s'),
             "updated_at"=> $this->updated_at->translatedFormat('l, Y-m-d H:i:s'),
             "deleted_at"=> isset($this->deleted_at) ? $this->deleted_at->translatedFormat('l, Y-m-d H:i:s') : null,
