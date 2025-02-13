@@ -14,10 +14,10 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        // Schema::disableForeignKeyConstraints();
-        // User::truncate();
-        // Schema::enableForeignKeyConstraints();
-        
+        Schema::disableForeignKeyConstraints();
+        User::truncate();
+        Schema::enableForeignKeyConstraints();
+
         $users = [
             ['name' => 'kingudin', 'email' => 'manager@example.com', 'password' => 12345678 ,'role_id' => 1],
             ['name' => 'budi', 'email' => 'waiter@example.com', 'password' => 12345678 ,'role_id' => 2],

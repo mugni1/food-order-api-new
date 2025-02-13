@@ -6,6 +6,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\ItemCreateUpdateDelete;
 use App\Http\Middleware\OrderCreate;
+use App\Http\Middleware\OrderDeliver;
 use App\Http\Middleware\OrderPaid;
 use App\Http\Middleware\OrderReady;
 use App\Http\Middleware\UserCreate;
@@ -43,5 +44,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/order/{id}', [OrderController::class, 'show']);
     Route::post('/order', [OrderController::class,'store'])->middleware(OrderCreate::class); // waiter
     Route::get('/order/{id}/ready', [OrderController::class,'updateReady'])->middleware(OrderReady::class); // chef
+    Route::get('/order/{id}/delivered', [OrderController::class,'updateDeliver'])->middleware(OrderDeliver::class); // waiter
     Route::get('/order/{id}/paid', [OrderController::class,'updatePaid'])->middleware(OrderPaid::class); // cashier
 });

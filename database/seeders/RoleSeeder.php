@@ -14,10 +14,10 @@ class RoleSeeder extends Seeder
      */
     public function run(): void
     {
-        // Schema::disableForeignKeyConstraints();
-        // Role::truncate();
-        // Schema::enableForeignKeyConstraints();
-        
+        Schema::disableForeignKeyConstraints();
+        Role::truncate();
+        Schema::enableForeignKeyConstraints();
+
         $roles = [
             ['name' => 'manager'],
             ['name' => 'waiter'],

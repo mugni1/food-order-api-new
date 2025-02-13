@@ -72,6 +72,20 @@ class OrderController extends Controller
         return new OrderDetailResource($order);
     }
 
+    // update order status to deliver
+    public function updateDeliver(Request $request){
+        $order = Order::FindOrFail($request['id']);
+        if($order['status'] != 'ready'){
+            return response(['message' => 'Order status must be ready'], 400);
+        }
+
+        $order->update([
+            'status' => 'delivered'
+        ]);
+
+        return new OrderDetailResource($order);
+    }
+
     // update order status to paid
     public function updatePaid(Request $request){
         $order = Order::FindOrFail($request['id']);

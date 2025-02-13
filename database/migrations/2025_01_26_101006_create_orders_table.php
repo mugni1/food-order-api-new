@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('table_no', 5);
             $table->date('order_date');
             $table->time('order_time');
-            $table->enum('status', ['ordered', 'ready', 'paid'])->default('ordered');
+            $table->enum('status', ['ordered', 'ready','delivered','paid'])->default('ordered');
             $table->integer('total')->unsigned();
             $table->unsignedBigInteger('waiter_id');
             $table->unsignedBigInteger('cashier_id');
