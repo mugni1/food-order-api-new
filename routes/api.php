@@ -42,6 +42,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
     // Order
     Route::get('/orders', [OrderController::class, 'index']);
     Route::get('/order/{id}', [OrderController::class, 'show']);
+    Route::get('/orders/ordered', [OrderController::class, 'ordered'])->middleware(OrderReady::class); // buat si chef
+    Route::get('/orders/ready', [OrderController::class, 'ready'])->middleware(OrderDeliver::class); // buat si waiter
+    Route::get('/orders/delivered', [OrderController::class, 'delivered'])->middleware(OrderPaid::class); // buat si cashier
     Route::post('/order', [OrderController::class,'store'])->middleware(OrderCreate::class); // waiter
     Route::get('/order/{id}/ready', [OrderController::class,'updateReady'])->middleware(OrderReady::class); // chef
     Route::get('/order/{id}/delivered', [OrderController::class,'updateDeliver'])->middleware(OrderDeliver::class); // waiter

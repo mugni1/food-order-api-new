@@ -15,6 +15,33 @@ class OrderController extends Controller
         return response(['data' => $orders], 200);
     }
 
+    // show order ordered
+    public function ordered(){
+        $orders = Order::where('status', 'ordered')->orderBy('created_at', 'desc')->select(['id','customer_name','table_no',  'status', 'total','order_date', 'order_time',])->get();
+        if(count($orders) == 0){
+            return response(['message'=>'No orders are ordered yet','data' => []], 200);
+        }
+        return response(['data' => $orders], 200);
+    }
+
+    // show order ready
+    public function ready(){
+        $orders = Order::where('status', 'ready')->orderBy('created_at', 'desc')->select(['id','customer_name','table_no',  'status', 'total','order_date', 'order_time',])->get();
+        if(count($orders) == 0){
+            return response(['message'=>'No orders are ready yet','data' => []], 200);
+        }
+        return response(['data' => $orders], 200);
+    }
+
+    // show order delivered
+    public function delivered(){
+        $orders = Order::where('status', 'delivered')->orderBy('created_at', 'desc')->select(['id','customer_name','table_no',  'status', 'total','order_date', 'order_time',])->get();
+        if(count($orders) == 0){
+            return response(['message'=>'No orders are delivered yet','data' => []], 200);
+        }
+        return response(['data' => $orders], 200);
+    }
+
     // show order
     public function show(Request $request){
         $order = Order::findOrFail($request['id']);
